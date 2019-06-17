@@ -1,6 +1,8 @@
 ﻿using Store.BusinessLogic;
 using System.Linq;
 using System;
+using System.Text;
+using Store;
 
 namespace MarketStoreSystem
 {
@@ -8,6 +10,15 @@ namespace MarketStoreSystem
     {
         public static void Main()
         {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Please, make a new card." + Environment.NewLine);
+            sb.Append("  Example inputs:" + Environment.NewLine);
+            sb.Append($"RegisterCard {CardConstants.BronzeCardName} 1" + Environment.NewLine);
+            sb.Append($"RegisterCard {CardConstants.SilverCardName} 2" + Environment.NewLine);
+            sb.Append($"RegisterCard {CardConstants.GoldCardName} 3" + Environment.NewLine);
+
+            Console.WriteLine(sb);
+
             string input;
             var draftManager = new DraftManager();
             while ((input = Console.ReadLine()) != "Shutdown")
@@ -21,9 +32,9 @@ namespace MarketStoreSystem
                     case "RegisterCard":
                         Console.WriteLine(draftManager.RegisterCard(arguments));
                         break;
-                        
+
                     case "MakePurchase":
-                       draftManager.MakePurchase(arguments);
+                        Console.WriteLine(draftManager.MakePurchase(arguments));
                         break;
                     default:
                         break;

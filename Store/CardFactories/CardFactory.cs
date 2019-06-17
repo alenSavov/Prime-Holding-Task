@@ -10,7 +10,7 @@ namespace Store.CardFactories
         {
             var type = arguments[0];
             var id = int.Parse(arguments[1]);
-
+            
             switch (type)
             {
                 case "Bronze":

@@ -42,8 +42,13 @@ namespace Store.BusinessLogic
 
         }
 
-        public void MakePurchase(List<string> arguments)
+        public string MakePurchase(List<string> arguments)
         {
+            if (cards.Count == 0)
+            {
+                return "You need to make a new card first.";
+            }
+
             int cardId = int.Parse(arguments[0]);
             decimal currentPurchaseSum = decimal.Parse(arguments[1]);
 
@@ -55,7 +60,7 @@ namespace Store.BusinessLogic
 
             PayDesk.PrintAccountInfo(card.Type, card.GetTurnover(), currentPurchaseSum, discountRate, resultSet[0], resultSet[1]);
 
-
+            return "";
         }
 
         private List<decimal> GetCalculateThePriceWithDiscount(decimal purchaseSum, double discountRate)
@@ -84,7 +89,7 @@ namespace Store.BusinessLogic
 
         public string ShutDown()
         {
-            return $"System Shutdown";
+            return $"The system is off";
         }
     }
 }
